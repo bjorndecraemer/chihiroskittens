@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active">Chihiro's Kittens!</a>
+
+  <button dropdown class="navbar-toggler" (click)="toggleCollapsed()" type="button" dropdownToggle data-toggle="collapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div [ngClass]="{ 'show': !isCollapsed }" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link"  routerLink="/" routerLinkActive="active">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" dropdownToggle id="parentsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Parents
+        </a>
+        <div class="dropdown-menu" *dropdownMenu aria-labelledby="parentsDropdown">
+          <a *ngFor="let parentCat of parents" class="dropdown-item"
+             [routerLink]="['/cat', parentCat.name]"
+             routerLinkActive="active">{{parentCat.name}}
+            <fa-icon *ngIf="parentCat.isMale()" [icon]="faMars"></fa-icon>
+            <fa-icon *ngIf="parentCat.isFemale()" [icon]="faVenus"></fa-icon>
+          </a>
+        </div>
+      </li>
+      <li class="nav-item dropdown" dropdown>
+        <a class="nav-link dropdown-toggle" dropdownToggle id="kittensDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Kittens
+        </a>
+        <div class="dropdown-menu" *dropdownMenu aria-labelledby="kittensDropdown">
+          <a *ngFor="let kittenCat of kittens" class="dropdown-item" routerLink="/kittens">{{kittenCat.name}}
+            <fa-icon *ngIf="kittenCat.isMale()" [icon]="faMars"></fa-icon>
+            <fa-icon *ngIf="kittenCat.isFemale()" [icon]="faVenus"></fa-icon>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
