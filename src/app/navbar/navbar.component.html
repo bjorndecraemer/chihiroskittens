@@ -15,7 +15,7 @@
           Parents
         </a>
         <div class="dropdown-menu" *dropdownMenu aria-labelledby="parentsDropdown">
-          <a *ngFor="let parentCat of parents" class="dropdown-item"
+          <a *ngFor="let parentCat of (catState | async).parents" class="dropdown-item"
              [routerLink]="['/cat', parentCat.name]"
              routerLinkActive="active">{{parentCat.name}}
             <fa-icon *ngIf="parentCat.isMale()" [icon]="faMars"></fa-icon>

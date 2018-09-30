@@ -11,6 +11,8 @@ import { KittensComponent } from './kittens/kittens.component';
 import { ParentsComponent } from './parents/parents.component';
 import { CatDetailComponent } from './cat-detail/cat-detail.component';
 import {CatService} from "./services/cat.service";
+import {StoreModule} from "@ngrx/store";
+import {catReducer} from "./store/cat.reducer";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {CatService} from "./services/cat.service";
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
-    FontAwesomeModule
+    FontAwesomeModule,
+    StoreModule.forRoot(catReducer)
   ],
   providers: [CatService],
   bootstrap: [AppComponent]

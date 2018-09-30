@@ -1,13 +1,16 @@
 import {Action} from "@ngrx/store";
+import {Cat} from "../shared/models/cat.model";
 
-export const GET_PARENTS = 'GET_PARENTS';
-export const GET_KITTENS = 'GET_KITTENS';
+export const SET_PARENTS = 'SET_PARENTS';
+export const SET_KITTENS = 'SET_KITTENS';
 
-export class GetParents implements Action{
-  readonly type = GET_PARENTS;
+export class SetParents implements Action{
+  readonly type = SET_PARENTS;
+  constructor(public payload: Cat[]){}
 }
-export class GetKittens implements Action{
-  readonly type = GET_KITTENS;
+export class SetKittens implements Action{
+  readonly type = SET_KITTENS;
+  constructor(public payload: Cat[]){}
 }
 
-export type CatActions = GetParents | GetKittens;
+export type CatActions = SetParents | SetKittens;
