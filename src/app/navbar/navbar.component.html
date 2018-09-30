@@ -15,7 +15,7 @@
           Parents
         </a>
         <div class="dropdown-menu" *dropdownMenu aria-labelledby="parentsDropdown">
-          <a *ngFor="let parentCat of (catState | async).parents" class="dropdown-item"
+          <a *ngFor="let parentCat of (catsState| async).parents" class="dropdown-item"
              [routerLink]="['/cat', parentCat.name]"
              routerLinkActive="active">{{parentCat.name}}
             <fa-icon *ngIf="parentCat.isMale()" [icon]="faMars"></fa-icon>
@@ -28,7 +28,7 @@
           Kittens
         </a>
         <div class="dropdown-menu" *dropdownMenu aria-labelledby="kittensDropdown">
-          <a *ngFor="let kittenCat of kittens" class="dropdown-item" routerLink="/kittens">{{kittenCat.name}}
+          <a *ngFor="let kittenCat of (catsState |async).kittens" class="dropdown-item" routerLink="/kittens">{{kittenCat.name}}
             <fa-icon *ngIf="kittenCat.isMale()" [icon]="faMars"></fa-icon>
             <fa-icon *ngIf="kittenCat.isFemale()" [icon]="faVenus"></fa-icon>
           </a>

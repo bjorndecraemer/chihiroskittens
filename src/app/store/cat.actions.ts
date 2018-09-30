@@ -1,4 +1,4 @@
-import {Action} from "@ngrx/store";
+ import {Action} from "@ngrx/store";
 import {Cat} from "../shared/models/cat.model";
 
 export const SET_PARENTS = 'SET_PARENTS';

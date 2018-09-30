@@ -29,7 +29,7 @@ import {catReducer} from "./store/cat.reducer";
     BsDropdownModule.forRoot(),
     CollapseModule.forRoot(),
     FontAwesomeModule,
-    StoreModule.forRoot(catReducer)
+    StoreModule.forRoot({cats : catReducer})
   ],
   providers: [CatService],
   bootstrap: [AppComponent]
