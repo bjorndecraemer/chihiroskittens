@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {Observable} from "rxjs";
+import * as fromCat from "../store/cat.reducer";
+import * as CatsActions from '../store/cat.actions';
+import {Store} from "@ngrx/store";
 
 @Component({
   selector: 'app-home',
@@ -7,9 +11,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  catsState : Observable<fromCat.AppState>;
 
-  ngOnInit() {
+  constructor(private store : Store<fromCat.AppState>) { }
+
+  ngOnInit(){
+    this.catsState = this.store.select('cats');
   }
 
 }

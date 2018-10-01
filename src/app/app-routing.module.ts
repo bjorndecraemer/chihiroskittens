@@ -6,8 +6,8 @@ import {ParentsComponent} from "./parents/parents.component";
 import {CatDetailComponent} from "./cat-detail/cat-detail.component";
 
 const ROUTES = [
-  {path: 'kittens', component: KittensComponent},
-  {path: 'parents', component: ParentsComponent},
+  {path: 'kittens/:id', component: KittensComponent},
+  {path: 'parents/:id', component: ParentsComponent},
   {path: 'cat/:id', component: CatDetailComponent },
   {path: 'home', component: HomeComponent},
   {path: '**', redirectTo : '/home'},
@@ -15,7 +15,7 @@ const ROUTES = [
 ]
 
 @NgModule({
-  imports : [RouterModule.forRoot(ROUTES, {enableTracing : true})],
+  imports : [RouterModule.forRoot(ROUTES)],
   exports : [RouterModule]
 })
 export class AppRoutingModule{

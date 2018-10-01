@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" routerLink="/" routerLinkActive="active">Chihiro's Kittens!</a>
+  <a class="navbar-brand" routerLink="/" routerLinkActive="active" >Chihiro's Kittens!</a>
 
   <button dropdown class="navbar-toggler" (click)="toggleCollapsed()" type="button" dropdownToggle data-toggle="collapse">
     <span class="navbar-toggler-icon"></span>
@@ -15,11 +15,11 @@
           Parents
         </a>
         <div class="dropdown-menu" *dropdownMenu aria-labelledby="parentsDropdown">
-          <a *ngFor="let parentCat of (catsState| async).parents" class="dropdown-item"
-             [routerLink]="['/cat', parentCat.name]"
+          <a *ngFor="let parentCat of (catsState| async).parents ; let i = index" class="dropdown-item"
+             [routerLink]="['/parents', i]"
              routerLinkActive="active">{{parentCat.name}}
-            <fa-icon *ngIf="parentCat.isMale()" [icon]="faMars"></fa-icon>
-            <fa-icon *ngIf="parentCat.isFemale()" [icon]="faVenus"></fa-icon>
+            <fa-icon *ngIf="parentCat.sex === 'm'" [icon]="faMars"></fa-icon>
+            <fa-icon *ngIf="parentCat.sex === 'f'" [icon]="faVenus"></fa-icon>
           </a>
         </div>
       </li>
@@ -28,11 +28,17 @@
           Kittens
         </a>
         <div class="dropdown-menu" *dropdownMenu aria-labelledby="kittensDropdown">
-          <a *ngFor="let kittenCat of (catsState |async).kittens" class="dropdown-item" routerLink="/kittens">{{kittenCat.name}}
-            <fa-icon *ngIf="kittenCat.isMale()" [icon]="faMars"></fa-icon>
-            <fa-icon *ngIf="kittenCat.isFemale()" [icon]="faVenus"></fa-icon>
+          <a *ngFor="let kittenCat of (catsState |async).kittens ; let j = index" class="dropdown-item" [routerLink]="['/kittens',j]">{{kittenCat.name}}
+            <fa-icon *ngIf="kittenCat.sex === 'm'" [icon]="faMars"></fa-icon>
+            <fa-icon *ngIf="kittenCat.sex === 'f'" [icon]="faVenus"></fa-icon>
           </a>
         </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="onSaveData()">SAVE DATA</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" (click)="onFetchData()">LOAD DATA</a>
       </li>
     </ul>
   </div>

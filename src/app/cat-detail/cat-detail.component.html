@@ -1,7 +1,30 @@
 <div class="container">
-  <div class="row">
+  <div class="row" *ngIf="cat">
     <div class="col-12">
-      This is a cat's detail page! of {{catName}}
+      <div class="jumbotron">
+        <div class="row">
+          <div class="col-6">
+            <h1 class="display-4">{{cat.name}}
+              <fa-icon *ngIf="cat.sex == 'm'" [icon]="faMars"></fa-icon>
+              <fa-icon *ngIf="cat.sex == 'f'" [icon]="faVenus"></fa-icon>
+            </h1>
+            <p>Born : {{cat.birthDate | date}}</p>
+            <p class="lead">{{cat.shortBio}}</p>
+            <label>Nicknames :</label><span>{{cat.getNicknameString()}}</span>
+          </div>
+          <div class="col-6">
+            <img [src]="cat.profilePic" alt="..." class="img-thumbnail">
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <hr class="my-4">
+            <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+            <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </div>
